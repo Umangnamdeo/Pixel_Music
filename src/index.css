@@ -1,0 +1,146 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Boldini", "Bodoni Moda", "Instrument Serif", "Newsreader", Georgia, serif;
+  --font-boldini: "Boldini", "Bodoni Moda", "Instrument Serif", Georgia, serif;
+  --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Geist Mono', monospace;
+  --font-feature-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-feature-stat: 'JetBrains Mono', 'Geist Mono', monospace;
+  --color-cosmic-bg: #070709;
+  --color-cosmic-card: rgba(22, 20, 26, 0.72);
+  --color-cosmic-amber: #e29d52;
+  --color-cosmic-gold: #f3b775;
+}
+
+/* Feature Cards Font Styling per design specifications */
+.font-feature-body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.font-feature-stat {
+  font-family: 'JetBrains Mono', 'Geist Mono', monospace;
+}
+
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    font-family: var(--font-sans);
+    background-color: #070709;
+    color: #e6e3df;
+  }
+}
+
+.font-boldini {
+  font-family: var(--font-boldini);
+}
+
+/* Hardware accelerated parallax container */
+.parallax-layer {
+  will-change: transform;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
+
+/* Custom smooth scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #070709;
+}
+::-webkit-scrollbar-thumb {
+  background: #25232d;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3e394b;
+}
+
+/* Cosmic backdrop radial glow */
+.cosmic-radial-glow {
+  background: radial-gradient(circle at 60% 30%, rgba(226, 157, 82, 0.12) 0%, rgba(130, 78, 30, 0.05) 35%, transparent 70%);
+}
+
+.cosmic-card-border {
+  border: 1px solid rgba(226, 157, 82, 0.18);
+  box-shadow: 0 16px 36px -12px rgba(0, 0, 0, 0.65), 0 0 1px 1px rgba(226, 157, 82, 0.08) inset;
+}
+.cosmic-card-border:hover {
+  border-color: rgba(243, 183, 117, 0.4);
+  box-shadow: 0 20px 48px -10px rgba(0, 0, 0, 0.8), 0 0 24px -4px rgba(226, 157, 82, 0.2), 0 0 1px 1px rgba(243, 183, 117, 0.2) inset;
+}
+
+/* Subtle vinyl grooving effect */
+.vinyl-grooves {
+  background: repeating-radial-gradient(
+    circle at center,
+    rgba(255, 255, 255, 0.03) 0,
+    rgba(255, 255, 255, 0.03) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+}
+
+/* Subtle seismic font tremor when asteroid impacts Saturn */
+@keyframes impactTremor {
+  0% { transform: translate3d(0, 0, 0) rotate(0deg); }
+  20% { transform: translate3d(-1.5px, 1.2px, 0) rotate(-0.2deg); }
+  40% { transform: translate3d(1.8px, -1px, 0) rotate(0.2deg); }
+  60% { transform: translate3d(-1px, 0.6px, 0) rotate(-0.1deg); }
+  80% { transform: translate3d(0.8px, -0.4px, 0) rotate(0.05deg); }
+  100% { transform: translate3d(0, 0, 0) rotate(0deg); }
+}
+
+.impact-shake {
+  animation: impactTremor 0.38s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+  will-change: transform;
+}
+
+/* Card 02 Modern Material 3 Dynamic Themes & CSS Variables */
+.theme-aurora {
+  --theme-primary: #10b981;
+  --theme-secondary: #06b6d4;
+  --theme-bg: rgba(7, 21, 17, 0.90);
+  --theme-border: rgba(16, 185, 129, 0.45);
+  --theme-border-glow: rgba(16, 185, 129, 0.65);
+  --theme-glow: rgba(16, 185, 129, 0.28);
+  --theme-shadow: 0 20px 50px -10px rgba(16, 185, 129, 0.35), 0 0 32px 2px rgba(6, 182, 212, 0.22);
+}
+
+.theme-deep-ocean {
+  --theme-primary: #2563eb;
+  --theme-secondary: #3b82f6;
+  --theme-bg: rgba(9, 17, 32, 0.90);
+  --theme-border: rgba(37, 99, 235, 0.45);
+  --theme-border-glow: rgba(59, 130, 246, 0.65);
+  --theme-glow: rgba(37, 99, 235, 0.28);
+  --theme-shadow: 0 20px 50px -10px rgba(37, 99, 235, 0.35), 0 0 32px 2px rgba(59, 130, 246, 0.22);
+}
+
+.theme-starlight {
+  --theme-primary: #e29d52;
+  --theme-secondary: #f3b775;
+  --theme-bg: rgba(18, 17, 23, 0.90);
+  --theme-border: rgba(226, 157, 82, 0.45);
+  --theme-border-glow: rgba(243, 183, 117, 0.65);
+  --theme-glow: rgba(226, 157, 82, 0.25);
+  --theme-shadow: 0 20px 50px -10px rgba(226, 157, 82, 0.35), 0 0 32px 2px rgba(243, 183, 117, 0.22);
+}
+
+.theme-card-container {
+  background-color: var(--theme-bg);
+  border-color: var(--theme-border);
+  box-shadow: var(--theme-shadow);
+  transition: background-color 0.4s ease-out, border-color 0.4s ease-out, box-shadow 0.4s ease-out;
+}
+
+.theme-card-ambient-glow {
+  background-color: var(--theme-glow);
+  transition: background-color 0.4s ease-out;
+}
+
