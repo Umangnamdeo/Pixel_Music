@@ -12,7 +12,7 @@ export const TelegramModal: React.FC<TelegramModalProps> = ({ isOpen, onClose })
   return (
     <MaterialDialog isOpen={isOpen} onClose={onClose} ariaLabel="Pixel Music Official">
       <div
-        className="relative w-full max-w-md rounded-3xl bg-[#0e0d13] border border-[#24A1DE]/30 shadow-2xl p-6 sm:p-7 space-y-6 text-neutral-200"
+        className="dialog-panel dialog-panel-telegram relative w-full max-w-md rounded-3xl bg-[#0e0d13] border border-[#24A1DE]/30 p-6 sm:p-7 space-y-6 text-neutral-200 font-feature-body"
       >
         <button
           onClick={onClose}
@@ -33,7 +33,7 @@ export const TelegramModal: React.FC<TelegramModalProps> = ({ isOpen, onClose })
               <TelegramIcon className="w-3.5 h-3.5 shrink-0" />
               <span>t.me/PixelMusicApp</span>
             </div>
-            <h3 className="text-xl font-bold font-feature-body text-white tracking-tight">
+            <h3 className="font-['Newsreader',serif] text-2xl font-semibold text-white tracking-tight">
               Pixel Music Official
             </h3>
           </div>
@@ -46,7 +46,7 @@ export const TelegramModal: React.FC<TelegramModalProps> = ({ isOpen, onClose })
               <Users className="w-3.5 h-3.5 text-[#24A1DE]" />
               <span>Members</span>
             </div>
-            <div className="text-lg font-bold font-mono text-white tabular-nums">18,400+</div>
+            <div className="text-lg font-bold font-mono text-white tabular-nums">900</div>
           </div>
           <div className="p-3 rounded-xl bg-white/5 border border-white/10">
             <div className="flex items-center gap-1.5 text-xs text-neutral-400 mb-1">

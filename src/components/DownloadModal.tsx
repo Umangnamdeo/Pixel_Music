@@ -48,7 +48,7 @@ export const DownloadModal: React.FC<DownloadModalProps> = ({
   return (
     <MaterialDialog isOpen={isOpen} onClose={onClose} ariaLabel="Download PixelMusic">
       <div
-        className="relative w-full max-w-lg rounded-3xl bg-[#0f0e14] border border-[#e29d52]/30 shadow-2xl p-6 sm:p-8 space-y-6 text-neutral-200"
+        className="dialog-panel relative w-full max-w-lg rounded-3xl bg-[#0f0e14] border border-[#e29d52]/30 p-6 sm:p-8 space-y-6 text-neutral-200 font-feature-body"
       >
         {/* Close Button */}
         <button
@@ -71,7 +71,7 @@ export const DownloadModal: React.FC<DownloadModalProps> = ({
               <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
               <span>VERIFIED GITHUB ARTIFACT</span>
             </div>
-            <h3 className="text-xl font-bold font-feature-body text-white tracking-tight">
+            <h3 className="font-['Newsreader',serif] text-2xl font-semibold text-white tracking-tight">
               Download <span className="text-[#f3b775]">PixelMusic</span>
             </h3>
             <p className="text-xs text-neutral-400 font-feature-stat">

@@ -107,7 +107,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                   <span>Join the service</span>
                   <span className="group-hover:translate-x-1 transition-transform">→</span>
                   <span aria-hidden="true" className="text-neutral-600">•</span>
-                  <span className="text-neutral-400">18.4k members</span>
+                  <span className="text-neutral-400">900 members</span>
                 </div>
               </div>
             </div>
