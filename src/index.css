@@ -118,6 +118,19 @@
   will-change: transform;
 }
 
+@keyframes phoneScreenFade {
+  from { opacity: 0.65; }
+  to { opacity: 1; }
+}
+
+.phone-screen-transition {
+  animation: phoneScreenFade 350ms ease-out both;
+}
+
+.phone-ambient-glow {
+  opacity: 0.45;
+}
+
 @property --site-accent {
   syntax: "<color>";
   inherits: true;
@@ -373,6 +386,10 @@
     animation-duration: 3s !important;
     animation-iteration-count: infinite !important;
     animation-timing-function: ease-in-out !important;
+  }
+
+  .phone-screen-transition {
+    animation: none !important;
   }
 
   .parallax-layer {

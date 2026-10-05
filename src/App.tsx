@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { Navbar } from './components/Navbar';
 import { CosmicScene3D, VisualizerMode } from './components/CosmicScene3D';
 import { HeroSection } from './components/HeroSection';
-import { PreviewSection } from './components/PreviewSection';
+import { PhoneLineup } from './components/PhoneLineup';
 import { FeaturesSection } from './components/FeaturesSection';
 import { ReleasesSection } from './components/ReleasesSection';
 import { Footer } from './components/Footer';
@@ -27,9 +27,9 @@ export default function App() {
     setDownloadModalOpen(true);
   };
 
-  const handleAsteroidImpact = () => {
+  const handleAsteroidImpact = useCallback(() => {
     setShakeTrigger((prev) => prev + 1);
-  };
+  }, []);
 
   return (
     <div className={`site-theme theme-${selectedHarmony} min-h-screen bg-[#070709] text-[#e6e3df] relative selection:bg-[#e29d52]/30 selection:text-[#f3b775] overflow-x-hidden`}>
@@ -82,7 +82,7 @@ export default function App() {
             shakeTrigger={shakeTrigger}
           />
 
-          <PreviewSection />
+          <PhoneLineup />
 
           {/* The Good Stuff - 3D Feature Cards */}
           <FeaturesSection
