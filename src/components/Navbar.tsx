@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Download, Menu, X } from 'lucide-react';
-import { TelegramIcon, GithubIcon } from './BrandIcons';
+import { GithubIcon } from './BrandIcons';
 
 interface NavbarProps {
   onOpenDownload: () => void;
@@ -61,19 +61,12 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenDownload, onOpenTelegram }
         {/* Zone 3: Primary Actions */}
         <div className="hidden sm:flex items-center gap-3">
           <button
-            onClick={onOpenTelegram}
-            className="inline-flex items-center gap-2 px-3.5 py-2 text-xs font-medium text-neutral-200 bg-white/5 hover:bg-[#24A1DE]/20 hover:text-white border border-white/10 hover:border-[#24A1DE]/40 rounded-lg transition-all duration-150 whitespace-nowrap cursor-pointer group"
-          >
-            <TelegramIcon className="w-4 h-4 shrink-0 group-hover:scale-110 transition-transform" />
-            <span>Telegram</span>
-          </button>
-          <button
             onClick={onOpenDownload}
-            className="inline-flex items-center gap-2 px-4 py-2 text-xs font-semibold text-neutral-950 bg-[#e29d52] hover:bg-[#f3b775] rounded-lg transition-all duration-150 shadow-md shadow-[#e29d52]/20 hover:shadow-[#e29d52]/40 whitespace-nowrap active:scale-95 cursor-pointer"
+            className="inline-flex items-center gap-2 px-4 py-2 text-xs font-semibold text-neutral-950 bg-white hover:bg-neutral-200 rounded-lg transition-all duration-150 shadow-md shadow-black/20 hover:shadow-black/30 whitespace-nowrap active:scale-95 cursor-pointer border border-white"
           >
-            <GithubIcon className="w-4 h-4" />
+            <GithubIcon className="w-4 h-4 text-neutral-950" />
             <span>Get APK</span>
-            <span className="text-[10px] opacity-75 font-mono">v1.4.09</span>
+            <span className="text-[10px] opacity-80 font-mono">v1.4.09</span>
           </button>
         </div>
 
@@ -107,16 +100,6 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenDownload, onOpenTelegram }
             </a>
           </div>
           <div className="pt-3 border-t border-white/10 flex flex-col gap-2">
-            <button
-              onClick={() => {
-                setMobileMenuOpen(false);
-                onOpenTelegram();
-              }}
-              className="w-full py-2.5 flex items-center justify-center gap-2 text-xs font-medium text-neutral-200 bg-white/5 rounded-lg cursor-pointer hover:bg-[#24A1DE]/20"
-            >
-              <TelegramIcon className="w-4 h-4 shrink-0" />
-              <span>Join Telegram Community</span>
-            </button>
             <button
               onClick={() => {
                 setMobileMenuOpen(false);

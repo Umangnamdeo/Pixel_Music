@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import {
   Download,
-  ShieldCheck,
   Sparkles,
 } from 'lucide-react';
 import { TiltCard } from './TiltCard';
@@ -59,16 +58,19 @@ const THEME_PRESETS: ThemePreset[] = [
 interface FeaturesSectionProps {
   onOpenDownload?: () => void;
   onOpenTelegram?: () => void;
+  selectedTheme: ThemeKey;
+  onThemeChange: (theme: ThemeKey) => void;
 }
 
 export const FeaturesSection: React.FC<FeaturesSectionProps> = ({
   onOpenDownload,
+  selectedTheme: selectedThemeKey,
+  onThemeChange,
 }) => {
   // Card 1 state: APK Channel
   const [selectedChannel, setSelectedChannel] = useState<'stable' | 'beta'>('stable');
 
-  // Card 2 state: Material 3 Theme (default to 'starlight')
-  const [selectedTheme, setSelectedTheme] = useState<ThemePreset>(THEME_PRESETS[2]);
+  const selectedTheme = THEME_PRESETS.find((theme) => theme.id === selectedThemeKey) ?? THEME_PRESETS[2];
 
   // Card 3 state: Lossless Audio vs Standard
   const [fidelityMode, setFidelityMode] = useState<'lossless' | 'standard'>('lossless');
@@ -97,7 +99,7 @@ export const FeaturesSection: React.FC<FeaturesSectionProps> = ({
         {/* Feature 1: Latest APK releases & updates (🗳️) */}
         <TiltCard
           tiltMax={6}
-          className="bg-[#121117]/85 border border-[#e29d52]/20 hover:border-[#f3b775]/40 shadow-2xl backdrop-blur-xl p-7 pt-10 flex flex-col justify-between font-feature-body rounded-2xl transition-all duration-300"
+          className="feature-theme-card bg-[#121117]/85 border border-[#e29d52]/20 hover:border-[#f3b775]/40 shadow-2xl backdrop-blur-xl p-7 pt-10 flex flex-col justify-between font-feature-body rounded-2xl transition-all duration-300"
         >
           <div className="space-y-5">
             {/* Header with increased top breathing space */}
@@ -109,7 +111,7 @@ export const FeaturesSection: React.FC<FeaturesSectionProps> = ({
             </div>
 
             <div>
-              <h3 className="font-feature-body text-xl font-semibold text-white tracking-tight mb-1.5 flex items-center gap-2">
+              <h3 className="font-boldini text-2xl leading-none text-white tracking-[0.01em] mb-1.5 flex items-center gap-2">
                 Latest APK releases & updates
               </h3>
               <p className="font-feature-body text-xs text-neutral-300 leading-relaxed">
@@ -203,7 +205,7 @@ export const FeaturesSection: React.FC<FeaturesSectionProps> = ({
             </div>
 
             <div>
-              <h3 className="font-feature-body text-xl font-semibold text-white tracking-tight mb-1.5">
+              <h3 className="font-boldini text-2xl leading-none text-white tracking-[0.01em] mb-1.5">
                 Modern Material 3
               </h3>
               <p className="font-feature-body text-xs text-neutral-300 leading-relaxed">
@@ -237,7 +239,7 @@ export const FeaturesSection: React.FC<FeaturesSectionProps> = ({
                     <button
                       key={t.id}
                       type="button"
-                      onClick={() => setSelectedTheme(t)}
+                      onClick={() => onThemeChange(t.id)}
                       className={`py-2 px-2 rounded-lg text-xs font-feature-stat font-medium flex flex-col items-center justify-center gap-1.5 transition-all duration-300 border cursor-pointer ${
                         isSelected
                           ? 'ring-2 ring-offset-2 ring-offset-[#070709] font-bold shadow-md scale-[1.02]'
@@ -282,19 +284,12 @@ export const FeaturesSection: React.FC<FeaturesSectionProps> = ({
             </div>
           </div>
 
-          <div className="pt-5 border-t border-white/5 flex items-center gap-2 text-xs text-neutral-400 relative z-10">
-            <Sparkles
-              className="w-3.5 h-3.5 transition-colors duration-300"
-              style={{ color: 'var(--theme-secondary)' }}
-            />
-            <span className="font-feature-body">Gesture Navigation & Predictive Back</span>
-          </div>
         </TiltCard>
 
         {/* Feature 3: Lossless audio & premium features (🎚️) */}
         <TiltCard
           tiltMax={6}
-          className="bg-[#121117]/85 border border-[#e29d52]/20 hover:border-[#f3b775]/40 shadow-2xl backdrop-blur-xl p-7 pt-10 flex flex-col justify-between font-feature-body rounded-2xl transition-all duration-300"
+          className="feature-theme-card bg-[#121117]/85 border border-[#e29d52]/20 hover:border-[#f3b775]/40 shadow-2xl backdrop-blur-xl p-7 pt-10 flex flex-col justify-between font-feature-body rounded-2xl transition-all duration-300"
         >
           <div className="space-y-5">
             {/* Header with increased top breathing space */}
@@ -306,7 +301,7 @@ export const FeaturesSection: React.FC<FeaturesSectionProps> = ({
             </div>
 
             <div>
-              <h3 className="font-feature-body text-xl font-semibold text-white tracking-tight mb-1.5">
+              <h3 className="font-boldini text-2xl leading-none text-white tracking-[0.01em] mb-1.5">
                 Lossless audio & premium features
               </h3>
               <p className="font-feature-body text-xs text-neutral-300 leading-relaxed">
@@ -353,25 +348,25 @@ export const FeaturesSection: React.FC<FeaturesSectionProps> = ({
                     fidelityMode === 'lossless'
                       ? Math.min(100, Math.max(25, Math.sin(i * 0.6) * 45 + 55))
                       : Math.min(100, Math.max(10, Math.sin(i * 0.4) * 20 + 25));
+
                   return (
                     <div
                       key={i}
-                      className={`w-full rounded-t transition-all duration-300 ${
+                      className={`waveform-bar w-full rounded-t ${
                         fidelityMode === 'lossless'
-                          ? 'bg-gradient-to-t from-[#e29d52] to-[#f3b775]'
-                          : 'bg-neutral-600'
+                          ? 'waveform-bar-lossless bg-gradient-to-t from-[#e29d52] to-[#f3b775]'
+                          : 'waveform-bar-compressed bg-neutral-600'
                       }`}
-                      style={{ height: `${heightPercent}%` }}
+                      style={{
+                        height: `${heightPercent}%`,
+                        animationDelay: `${i * 65}ms`,
+                        animationDuration: `${1.8 + (i % 5) * 0.12}s`,
+                      }}
                     />
                   );
                 })}
               </div>
             </div>
-          </div>
-
-          <div className="pt-5 border-t border-white/5 flex items-center gap-2 text-xs text-neutral-400">
-            <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
-            <span className="font-feature-stat text-[11px]">100% Free • No Subscription Paywalls</span>
           </div>
         </TiltCard>
       </div>

@@ -57,6 +57,17 @@ export const Footer: React.FC<FooterProps> = ({ onOpenDownload, onOpenTelegram }
           © 2024–2026 PIXELMUSIC • GNU GPL v3.0
         </div>
       </div>
+      <div className="mt-8 pt-5 border-t border-white/5 text-center text-xs text-neutral-500">
+        Created by{' '}
+        <a
+          href="https://github.com/Umangnamdeo"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-neutral-300 hover:text-white transition-colors underline underline-offset-4"
+        >
+          Umangnamdeo
+        </a>
+      </div>
     </footer>
   );
 };

@@ -79,13 +79,6 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               <Download className="w-4 h-4" />
               <span>Download v1.4.09 APK</span>
             </button>
-            <button
-              onClick={onOpenTelegram}
-              className="inline-flex items-center gap-2.5 px-5 py-3.5 rounded-xl bg-white/5 hover:bg-white/10 text-neutral-200 hover:text-white border border-white/10 font-medium text-sm transition-all cursor-pointer font-feature-body group"
-            >
-              <TelegramIcon className="w-4 h-4 shrink-0 group-hover:scale-110 transition-transform" />
-              <span>Join Telegram</span>
-            </button>
           </div>
         </div>
 

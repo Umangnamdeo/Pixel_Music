@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Download, Check, Copy, ExternalLink, Sparkles } from 'lucide-react';
+import React from 'react';
+import { Download, ExternalLink, Sparkles } from 'lucide-react';
 import { TiltCard } from './TiltCard';
 
 interface ReleaseBuild {
@@ -41,14 +41,6 @@ interface ReleasesSectionProps {
 }
 
 export const ReleasesSection: React.FC<ReleasesSectionProps> = ({ onDownloadClick }) => {
-  const [copiedHash, setCopiedHash] = useState<string | null>(null);
-
-  const handleCopyHash = (hash: string) => {
-    navigator.clipboard.writeText(hash);
-    setCopiedHash(hash);
-    setTimeout(() => setCopiedHash(null), 2000);
-  };
-
   return (
     <section id="releases" className="py-24 px-6 sm:px-8 max-w-7xl mx-auto relative z-10 font-feature-body">
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
@@ -83,9 +75,9 @@ export const ReleasesSection: React.FC<ReleasesSectionProps> = ({ onDownloadClic
           <TiltCard
             key={build.fileName}
             tiltMax={8}
-            className={`group relative p-7 bg-[#131119]/85 backdrop-blur-xl rounded-2xl flex flex-col justify-between border cursor-pointer overflow-hidden transition-all duration-300 ease-out transform-gpu hover:-translate-y-2.5 ${
+            className={`release-theme-card group relative p-7 bg-[#131119]/85 backdrop-blur-xl rounded-2xl flex flex-col justify-between border cursor-pointer overflow-hidden transition-all duration-300 ease-out transform-gpu hover:-translate-y-2.5 ${
               build.recommended
-                ? 'border-[#e29d52]/50 shadow-[0_8px_30px_-6px_rgba(226,157,82,0.18)] hover:border-[#f3b775] hover:shadow-[0_20px_45px_-8px_rgba(226,157,82,0.38),0_0_30px_2px_rgba(243,183,117,0.18)]'
+                ? 'release-theme-card-recommended border-[#e29d52]/50 shadow-[0_8px_30px_-6px_rgba(226,157,82,0.18)] hover:border-[#f3b775] hover:shadow-[0_20px_45px_-8px_rgba(226,157,82,0.38),0_0_30px_2px_rgba(243,183,117,0.18)]'
                 : 'border-white/10 hover:border-[#e29d52]/60 hover:shadow-[0_20px_40px_-8px_rgba(226,157,82,0.25),0_0_24px_1px_rgba(243,183,117,0.12)]'
             }`}
           >
@@ -118,34 +110,6 @@ export const ReleasesSection: React.FC<ReleasesSectionProps> = ({ onDownloadClic
                 </div>
               </div>
 
-              <div className="p-2.5 rounded-xl bg-black/50 border border-white/5 group-hover:border-white/10 space-y-1 transition-colors">
-                <div className="flex items-center justify-between text-[10px] font-feature-stat text-neutral-400">
-                  <span>SHA-256 Checksum</span>
-                  <button
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      handleCopyHash(build.sha256);
-                    }}
-                    className="hover:text-white flex items-center gap-1 transition-colors cursor-pointer"
-                    title="Copy SHA-256"
-                  >
-                    {copiedHash === build.sha256 ? (
-                      <>
-                        <Check className="w-3 h-3 text-emerald-400" />
-                        <span className="text-emerald-400 font-medium">Copied</span>
-                      </>
-                    ) : (
-                      <>
-                        <Copy className="w-3 h-3" />
-                        <span>Copy</span>
-                      </>
-                    )}
-                  </button>
-                </div>
-                <div className="font-feature-stat text-[9px] text-neutral-500 truncate select-all group-hover:text-neutral-400 transition-colors">
-                  {build.sha256}
-                </div>
-              </div>
             </div>
 
             <div className="pt-6 relative z-10">

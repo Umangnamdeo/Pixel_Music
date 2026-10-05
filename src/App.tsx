@@ -8,8 +8,10 @@ import { Footer } from './components/Footer';
 import { DownloadModal } from './components/DownloadModal';
 import { TelegramModal } from './components/TelegramModal';
 import { useParallax } from './hooks/useParallax';
+import type { ThemeKey } from './components/FeaturesSection';
 
 export default function App() {
+  const [selectedHarmony, setSelectedHarmony] = useState<ThemeKey>('starlight');
   const [downloadModalOpen, setDownloadModalOpen] = useState(false);
   const [selectedApkFile, setSelectedApkFile] = useState('PixelMusic-v1.4.09-universal.apk');
   const [telegramModalOpen, setTelegramModalOpen] = useState(false);
@@ -29,7 +31,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#070709] text-[#e6e3df] relative selection:bg-[#e29d52]/30 selection:text-[#f3b775] overflow-x-hidden">
+    <div className={`site-theme theme-${selectedHarmony} min-h-screen bg-[#070709] text-[#e6e3df] relative selection:bg-[#e29d52]/30 selection:text-[#f3b775] overflow-x-hidden`}>
       {/* 3D WebGL Cosmic Background with Parallax Displacement */}
       <div
         className="fixed inset-0 pointer-events-none parallax-layer z-0"
@@ -83,6 +85,8 @@ export default function App() {
           <FeaturesSection
             onOpenDownload={() => handleOpenDownload()}
             onOpenTelegram={() => setTelegramModalOpen(true)}
+            selectedTheme={selectedHarmony}
+            onThemeChange={setSelectedHarmony}
           />
 
           {/* Distribution & Releases */}

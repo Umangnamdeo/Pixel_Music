@@ -101,10 +101,69 @@
   will-change: transform;
 }
 
+@property --site-accent {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #e29d52;
+}
+
+@property --site-accent-bright {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #f3b775;
+}
+
+@property --site-page-glow {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: rgba(226, 157, 82, 0.12);
+}
+
+@keyframes waveformPulseLossless {
+  from {
+    transform: scaleY(0.78);
+    opacity: 0.82;
+  }
+  to {
+    transform: scaleY(1.04);
+    opacity: 0.95;
+  }
+}
+
+@keyframes waveformPulseCompressed {
+  from {
+    transform: scaleY(0.86);
+    opacity: 0.8;
+  }
+  to {
+    transform: scaleY(1.02);
+    opacity: 0.92;
+  }
+}
+
+.waveform-bar {
+  transform-origin: bottom;
+  animation-timing-function: cubic-bezier(0.37, 0, 0.63, 1);
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  will-change: transform, opacity;
+}
+
+.waveform-bar-lossless {
+  animation-name: waveformPulseLossless;
+}
+
+.waveform-bar-compressed {
+  animation-name: waveformPulseCompressed;
+}
+
 /* Card 02 Modern Material 3 Dynamic Themes & CSS Variables */
 .theme-aurora {
   --theme-primary: #10b981;
   --theme-secondary: #06b6d4;
+  --site-accent: #10b981;
+  --site-accent-bright: #06b6d4;
+  --site-page-glow: rgba(16, 185, 129, 0.12);
   --theme-bg: rgba(7, 21, 17, 0.90);
   --theme-border: rgba(16, 185, 129, 0.45);
   --theme-border-glow: rgba(16, 185, 129, 0.65);
@@ -115,6 +174,9 @@
 .theme-deep-ocean {
   --theme-primary: #2563eb;
   --theme-secondary: #3b82f6;
+  --site-accent: #2563eb;
+  --site-accent-bright: #3b82f6;
+  --site-page-glow: rgba(37, 99, 235, 0.14);
   --theme-bg: rgba(9, 17, 32, 0.90);
   --theme-border: rgba(37, 99, 235, 0.45);
   --theme-border-glow: rgba(59, 130, 246, 0.65);
@@ -125,6 +187,9 @@
 .theme-starlight {
   --theme-primary: #e29d52;
   --theme-secondary: #f3b775;
+  --site-accent: #e29d52;
+  --site-accent-bright: #f3b775;
+  --site-page-glow: rgba(226, 157, 82, 0.12);
   --theme-bg: rgba(18, 17, 23, 0.90);
   --theme-border: rgba(226, 157, 82, 0.45);
   --theme-border-glow: rgba(243, 183, 117, 0.65);
@@ -144,3 +209,156 @@
   transition: background-color 0.4s ease-out;
 }
 
+.site-theme {
+  background-image: radial-gradient(ellipse at 50% 0%, var(--site-page-glow), transparent 55%);
+  transition: --site-accent 0.45s ease, --site-accent-bright 0.45s ease, --site-page-glow 0.55s ease;
+}
+
+.site-theme [class~="text-[#e29d52]"] {
+  color: var(--site-accent) !important;
+  transition: color 0.35s ease;
+}
+
+.site-theme [class~="text-[#f3b775]"],
+.site-theme [class~="text-[#f3b775]/90"] {
+  color: var(--site-accent-bright) !important;
+  transition: color 0.35s ease;
+}
+
+.site-theme [class~="text-[#e29d52]/20"] {
+  color: color-mix(in srgb, var(--site-accent) 20%, transparent) !important;
+}
+
+.site-theme .group:hover [class~="group-hover:text-[#f3b775]"] {
+  color: var(--site-accent-bright) !important;
+}
+
+.site-theme [class~="bg-[#e29d52]"] {
+  background-color: var(--site-accent) !important;
+  transition: background-color 0.35s ease, box-shadow 0.35s ease;
+}
+
+.site-theme [class~="bg-[#e29d52]/15"] {
+  background-color: color-mix(in srgb, var(--site-accent) 15%, transparent) !important;
+}
+
+.site-theme [class~="bg-[#e29d52]/20"] {
+  background-color: color-mix(in srgb, var(--site-accent) 20%, transparent) !important;
+}
+
+.site-theme [class~="bg-[#e29d52]/25"] {
+  background-color: color-mix(in srgb, var(--site-accent) 25%, transparent) !important;
+}
+
+.site-theme [class~="hover:bg-[#f3b775]"]:hover {
+  background-color: var(--site-accent-bright) !important;
+}
+
+.site-theme .group:hover [class~="group-hover:bg-[#f3b775]"] {
+  background-color: var(--site-accent-bright) !important;
+}
+
+.site-theme .group:hover [class~="group-hover:bg-[#e29d52]/20"] {
+  background-color: color-mix(in srgb, var(--site-accent) 20%, transparent) !important;
+}
+
+.site-theme [class~="border-[#e29d52]/15"] {
+  border-color: color-mix(in srgb, var(--site-accent) 15%, transparent) !important;
+}
+
+.site-theme [class~="border-[#e29d52]/20"] {
+  border-color: color-mix(in srgb, var(--site-accent) 20%, transparent) !important;
+}
+
+.site-theme [class~="border-[#e29d52]/30"] {
+  border-color: color-mix(in srgb, var(--site-accent) 30%, transparent) !important;
+}
+
+.site-theme [class~="border-[#e29d52]/50"] {
+  border-color: color-mix(in srgb, var(--site-accent) 50%, transparent) !important;
+}
+
+.site-theme [class~="hover:border-[#f3b775]"]:hover,
+.site-theme [class~="hover:border-[#f3b775]/40"]:hover {
+  border-color: color-mix(in srgb, var(--site-accent-bright) 40%, transparent) !important;
+}
+
+.site-theme [class~="hover:border-[#e29d52]/60"]:hover {
+  border-color: color-mix(in srgb, var(--site-accent) 60%, transparent) !important;
+}
+
+.site-theme .group:hover [class~="group-hover:border-[#e29d52]/40"] {
+  border-color: color-mix(in srgb, var(--site-accent) 40%, transparent) !important;
+}
+
+.site-theme [class~="from-[#e29d52]"] {
+  --tw-gradient-from: var(--site-accent);
+}
+
+.site-theme [class~="to-[#f3b775]"] {
+  --tw-gradient-to: var(--site-accent-bright);
+}
+
+.site-theme [class~="via-[#f3b775]/40"] {
+  --tw-gradient-via: color-mix(in srgb, var(--site-accent-bright) 40%, transparent);
+}
+
+.site-theme .feature-theme-card {
+  background-color: color-mix(in srgb, #121117 92%, var(--site-accent));
+  border-color: color-mix(in srgb, var(--site-accent) 20%, transparent);
+  box-shadow: 0 20px 40px -25px color-mix(in srgb, var(--site-accent) 35%, transparent);
+  transition: background-color 0.45s ease, border-color 0.35s ease, box-shadow 0.4s ease;
+}
+
+.site-theme .feature-theme-card:hover {
+  border-color: color-mix(in srgb, var(--site-accent-bright) 40%, transparent);
+  box-shadow: 0 20px 48px -20px color-mix(in srgb, var(--site-accent) 45%, transparent);
+}
+
+.site-theme .release-theme-card {
+  background-color: color-mix(in srgb, #131119 94%, var(--site-accent));
+  transition: background-color 0.4s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.site-theme .release-theme-card-recommended {
+  border-color: color-mix(in srgb, var(--site-accent) 50%, transparent);
+  box-shadow: 0 8px 30px -6px color-mix(in srgb, var(--site-accent) 18%, transparent);
+}
+
+.site-theme .release-theme-card:hover {
+  border-color: color-mix(in srgb, var(--site-accent-bright) 60%, transparent);
+  box-shadow: 0 20px 45px -8px color-mix(in srgb, var(--site-accent) 30%, transparent),
+    0 0 26px 2px color-mix(in srgb, var(--site-accent-bright) 16%, transparent);
+}
+
+.site-theme ::selection,
+.site-theme::selection {
+  background-color: color-mix(in srgb, var(--site-accent) 30%, transparent);
+  color: var(--site-accent-bright);
+}
+
+.site-theme :is(a, button):focus-visible {
+  outline: 2px solid var(--site-accent-bright);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .waveform-bar {
+    animation-duration: 3s !important;
+    animation-iteration-count: infinite !important;
+    animation-timing-function: ease-in-out !important;
+  }
+
+  .parallax-layer {
+    will-change: auto;
+  }
+}
