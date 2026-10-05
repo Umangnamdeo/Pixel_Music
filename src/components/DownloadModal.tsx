@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { X, Download, Check, ShieldCheck, Smartphone, ExternalLink } from 'lucide-react';
+import { MaterialDialog } from './MaterialDialog';
 
 interface DownloadModalProps {
   isOpen: boolean;
@@ -14,8 +15,6 @@ export const DownloadModal: React.FC<DownloadModalProps> = ({
 }) => {
   const [downloadProgress, setDownloadProgress] = useState<number | null>(null);
   const [downloadComplete, setDownloadComplete] = useState(false);
-
-  if (!isOpen) return null;
 
   const handleStartDownload = () => {
     setDownloadProgress(10);
@@ -47,10 +46,9 @@ export const DownloadModal: React.FC<DownloadModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-in fade-in duration-200">
+    <MaterialDialog isOpen={isOpen} onClose={onClose} ariaLabel="Download PixelMusic">
       <div
         className="relative w-full max-w-lg rounded-3xl bg-[#0f0e14] border border-[#e29d52]/30 shadow-2xl p-6 sm:p-8 space-y-6 text-neutral-200"
-        onClick={(e) => e.stopPropagation()}
       >
         {/* Close Button */}
         <button
@@ -156,6 +154,6 @@ export const DownloadModal: React.FC<DownloadModalProps> = ({
           </p>
         </div>
       </div>
-    </div>
+    </MaterialDialog>
   );
 };

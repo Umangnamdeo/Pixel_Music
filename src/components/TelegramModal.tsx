@@ -1,6 +1,7 @@
 import React from 'react';
 import { X, Users, Radio, ExternalLink } from 'lucide-react';
 import { TelegramIcon } from './BrandIcons';
+import { MaterialDialog } from './MaterialDialog';
 
 interface TelegramModalProps {
   isOpen: boolean;
@@ -8,13 +9,10 @@ interface TelegramModalProps {
 }
 
 export const TelegramModal: React.FC<TelegramModalProps> = ({ isOpen, onClose }) => {
-  if (!isOpen) return null;
-
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-in fade-in duration-200">
+    <MaterialDialog isOpen={isOpen} onClose={onClose} ariaLabel="Pixel Music Official">
       <div
         className="relative w-full max-w-md rounded-3xl bg-[#0e0d13] border border-[#24A1DE]/30 shadow-2xl p-6 sm:p-7 space-y-6 text-neutral-200"
-        onClick={(e) => e.stopPropagation()}
       >
         <button
           onClick={onClose}
@@ -89,7 +87,6 @@ export const TelegramModal: React.FC<TelegramModalProps> = ({ isOpen, onClose })
           </a>
         </div>
       </div>
-    </div>
+    </MaterialDialog>
   );
 };
-

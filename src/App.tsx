@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Navbar } from './components/Navbar';
 import { CosmicScene3D, VisualizerMode } from './components/CosmicScene3D';
 import { HeroSection } from './components/HeroSection';
+import { PreviewSection } from './components/PreviewSection';
 import { FeaturesSection } from './components/FeaturesSection';
 import { ReleasesSection } from './components/ReleasesSection';
 import { Footer } from './components/Footer';
@@ -80,6 +81,8 @@ export default function App() {
             onOpenTelegram={() => setTelegramModalOpen(true)}
             shakeTrigger={shakeTrigger}
           />
+
+          <PreviewSection />
 
           {/* The Good Stuff - 3D Feature Cards */}
           <FeaturesSection

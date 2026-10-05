@@ -22,6 +22,23 @@
   font-family: 'JetBrains Mono', 'Geist Mono', monospace;
 }
 
+.pixel-material-dialog {
+  --md-dialog-container-color: transparent;
+  --md-dialog-container-shape: 1.5rem;
+  --md-sys-color-scrim: #000;
+}
+
+.pixel-material-dialog-content {
+  margin: -24px;
+  max-height: calc(100dvh - 64px);
+  overflow-y: auto;
+}
+
+.pixel-material-dialog.preview-fullscreen-dialog {
+  max-height: calc(100dvh - 24px);
+  max-width: min(700px, calc(100vw - 24px));
+}
+
 
 @layer base {
   html {

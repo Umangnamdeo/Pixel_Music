@@ -45,6 +45,12 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenDownload, onOpenTelegram }
         {/* Zone 2: Clean text navigation links */}
         <nav className="hidden md:flex items-center gap-7 text-sm font-medium text-neutral-300">
           <a
+            href="#preview"
+            className="hover:text-white transition-colors duration-150 py-1"
+          >
+            Preview
+          </a>
+          <a
             href="#features"
             className="hover:text-white transition-colors duration-150 py-1"
           >
@@ -84,6 +90,13 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenDownload, onOpenTelegram }
       {mobileMenuOpen && (
         <div className="md:hidden px-6 pt-4 pb-6 bg-[#0c0c10] border-b border-[#e29d52]/20 space-y-4">
           <div className="flex flex-col gap-3 text-sm font-medium text-neutral-300">
+            <a
+              href="#preview"
+              onClick={() => setMobileMenuOpen(false)}
+              className="hover:text-white py-1"
+            >
+              Preview
+            </a>
             <a
               href="#features"
               onClick={() => setMobileMenuOpen(false)}
