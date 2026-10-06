@@ -6,38 +6,20 @@ interface ReleaseBuild {
   arch: string;
   name: string;
   size: string;
-  fileName: string;
-  sha256: string;
   recommended?: boolean;
 }
 
 const RELEASE_BUILDS: ReleaseBuild[] = [
   {
-    arch: 'Universal (All Devices)',
-    name: 'PixelMusic Universal APK',
-    size: '18.4 MB',
-    fileName: 'PixelMusic-v1.4.09-universal.apk',
-    sha256: '9f83a218d6bc9431e7845bf029e81b672a912e75e921d3f9bc489c72e41fa802',
+    arch: 'Universal Android APK',
+    name: 'PixelMusic Universal Release',
+    size: '71.4 MiB',
     recommended: true,
-  },
-  {
-    arch: 'arm64-v8a',
-    name: 'PixelMusic 64-bit ARM',
-    size: '14.2 MB',
-    fileName: 'PixelMusic-v1.4.09-arm64-v8a.apk',
-    sha256: 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855',
-  },
-  {
-    arch: 'x86_64',
-    name: 'PixelMusic PC & Emulator Build',
-    size: '16.1 MB',
-    fileName: 'PixelMusic-v1.4.09-x86_64.apk',
-    sha256: 'd41d8cd98f00b204e9800998ecf8427e0a811d9a2468d60efd4fb9f82631a0e8',
   },
 ];
 
 interface ReleasesSectionProps {
-  onDownloadClick: (fileName: string) => void;
+  onDownloadClick: () => void;
 }
 
 export const ReleasesSection: React.FC<ReleasesSectionProps> = ({ onDownloadClick }) => {
@@ -50,11 +32,10 @@ export const ReleasesSection: React.FC<ReleasesSectionProps> = ({ onDownloadClic
             <span>✦ STABLE DISTRIBUTION</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-feature-body font-bold text-white tracking-tight">
-            Latest Release: <span className="italic font-normal text-[#f3b775]">v1.4.09</span>
+            Download the <span className="italic font-normal text-[#f3b775]">Universal APK</span>
           </h2>
           <p className="text-xs sm:text-sm text-neutral-300 font-feature-body leading-relaxed">
-            Published on GitHub with verifiable automated CI/CD reproducible builds.
-            Compatible with Android 8.0 (Oreo) through Android 15.
+            Download the supplied universal Android release package directly.
           </p>
         </div>
 
@@ -73,7 +54,7 @@ export const ReleasesSection: React.FC<ReleasesSectionProps> = ({ onDownloadClic
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-7">
         {RELEASE_BUILDS.map((build) => (
           <TiltCard
-            key={build.fileName}
+            key={build.arch}
             tiltMax={8}
             className={`release-theme-card group relative p-7 bg-[#131119]/85 backdrop-blur-xl rounded-2xl flex flex-col justify-between border cursor-pointer overflow-hidden transition-all duration-300 ease-out transform-gpu hover:-translate-y-2.5 ${
               build.recommended
@@ -116,7 +97,7 @@ export const ReleasesSection: React.FC<ReleasesSectionProps> = ({ onDownloadClic
               <button
                 onClick={(e) => {
                   e.stopPropagation();
-                  onDownloadClick(build.fileName);
+                  onDownloadClick();
                 }}
                 className={`w-full py-2.5 px-4 rounded-xl text-xs font-semibold font-feature-body flex items-center justify-center gap-2 transition-all cursor-pointer ${
                   build.recommended
@@ -125,7 +106,7 @@ export const ReleasesSection: React.FC<ReleasesSectionProps> = ({ onDownloadClic
                 }`}
               >
                 <Download className="w-3.5 h-3.5" />
-                <span>Download {build.fileName.split('-').pop()?.replace('.apk', '') || 'APK'}</span>
+                <span>Download APK</span>
               </button>
             </div>
           </TiltCard>

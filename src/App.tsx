@@ -5,25 +5,24 @@ import { HeroSection } from './components/HeroSection';
 import { FeaturesSection } from './components/FeaturesSection';
 import { ReleasesSection } from './components/ReleasesSection';
 import { Footer } from './components/Footer';
-import { DownloadModal } from './components/DownloadModal';
 import { TelegramModal } from './components/TelegramModal';
 import { useParallax } from './hooks/useParallax';
 import type { ThemeKey } from './components/FeaturesSection';
 
 export default function App() {
   const [selectedHarmony, setSelectedHarmony] = useState<ThemeKey>('starlight');
-  const [downloadModalOpen, setDownloadModalOpen] = useState(false);
-  const [selectedApkFile, setSelectedApkFile] = useState('PixelMusic-v1.4.09-universal.apk');
   const [telegramModalOpen, setTelegramModalOpen] = useState(false);
   const [cosmicMode, setCosmicMode] = useState<VisualizerMode>('saturn');
   const [shakeTrigger, setShakeTrigger] = useState(0);
   const { bgOffset, midOffset } = useParallax();
 
-  const handleOpenDownload = (fileName?: string) => {
-    if (fileName) {
-      setSelectedApkFile(fileName);
-    }
-    setDownloadModalOpen(true);
+  const handleOpenDownload = () => {
+    const downloadLink = document.createElement('a');
+    downloadLink.href = '/downloads/app-universal-release.apk';
+    downloadLink.download = 'app-universal-release.apk';
+    document.body.appendChild(downloadLink);
+    downloadLink.click();
+    downloadLink.remove();
   };
 
   const handleAsteroidImpact = useCallback(() => {
@@ -87,7 +86,7 @@ export default function App() {
           />
 
           {/* Distribution & Releases */}
-          <ReleasesSection onDownloadClick={(file) => handleOpenDownload(file)} />
+          <ReleasesSection onDownloadClick={handleOpenDownload} />
         </main>
 
         {/* Footer */}
@@ -100,12 +99,6 @@ export default function App() {
       </div>
 
       {/* Modals & Dialogs */}
-      <DownloadModal
-        isOpen={downloadModalOpen}
-        onClose={() => setDownloadModalOpen(false)}
-        selectedFile={selectedApkFile}
-      />
-
       <TelegramModal
         isOpen={telegramModalOpen}
         onClose={() => setTelegramModalOpen(false)}

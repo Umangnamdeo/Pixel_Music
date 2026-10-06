@@ -1,39 +1,26 @@
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import {
   AudioLines,
-  ChevronDown,
   BatteryCharging,
   Download,
-  Heart,
   Headphones,
-  ListMusic,
-  MoreVertical,
   Moon,
-  Pause,
-  Play,
-  Repeat2,
   ShieldCheck,
-  SkipBack,
-  SkipForward,
   Sparkles,
-  Shuffle,
-  Volume2,
   WifiOff,
 } from 'lucide-react';
+import { AppExperiencePreview } from './AppExperiencePreview';
+import { THEME_PRESETS, type ThemeKey } from './theme';
 import type { MdAssistChip } from '@material/web/chips/assist-chip.js';
 import type { MdFilterChip } from '@material/web/chips/filter-chip.js';
 import type { MdSlider } from '@material/web/slider/slider.js';
 import type { MdSwitch } from '@material/web/switch/switch.js';
-import type { MdIconButton } from '@material/web/iconbutton/icon-button.js';
 import type { MdElevation } from '@material/web/elevation/elevation.js';
-import type { MdRipple } from '@material/web/ripple/ripple.js';
 import '@material/web/chips/assist-chip.js';
 import '@material/web/chips/filter-chip.js';
 import '@material/web/slider/slider.js';
 import '@material/web/switch/switch.js';
-import '@material/web/iconbutton/icon-button.js';
 import '@material/web/elevation/elevation.js';
-import '@material/web/ripple/ripple.js';
 
 type MdElementProps<T extends HTMLElement> = React.DetailedHTMLProps<
   React.HTMLAttributes<T>,
@@ -53,20 +40,13 @@ declare module 'react' {
         labeled?: boolean;
       };
       'md-switch': MdElementProps<MdSwitch> & { selected?: boolean };
-      'md-icon-button': MdElementProps<MdIconButton>;
       'md-elevation': MdElementProps<MdElevation>;
-      'md-ripple': MdElementProps<MdRipple>;
     }
   }
 }
 
-export type ThemeKey = 'starlight' | 'deep-orbit' | 'solar-bronze';
-
-export const THEME_PRESETS: { id: ThemeKey; name: string; color: string; glow: string }[] = [
-  { id: 'starlight', name: 'Starlight Gold', color: '#f59e0b', glow: 'rgba(245, 158, 11, 0.22)' },
-  { id: 'deep-orbit', name: 'Deep Orbit', color: '#d97706', glow: 'rgba(217, 119, 6, 0.22)' },
-  { id: 'solar-bronze', name: 'Solar Bronze', color: '#bc7a3e', glow: 'rgba(188, 122, 62, 0.22)' },
-];
+export { THEME_PRESETS } from './theme';
+export type { ThemeKey } from './theme';
 
 interface FeaturesSectionProps {
   onOpenDownload: () => void;
@@ -87,50 +67,11 @@ export const FeaturesSection: React.FC<FeaturesSectionProps> = ({
   selectedTheme,
   onThemeChange,
 }) => {
-  const [playing, setPlaying] = useState(false);
   const [offlineMixEnabled, setOfflineMixEnabled] = useState(true);
   const [audioGuardEnabled, setAudioGuardEnabled] = useState(true);
-  const [currentTime, setCurrentTime] = useState(0);
-  const [duration, setDuration] = useState(0);
-  const [playbackError, setPlaybackError] = useState('');
   const [equalizer, setEqualizer] = useState(62);
   const [selectedFormat, setSelectedFormat] = useState<'FLAC' | 'DSD'>('FLAC');
   const [selectedQuickFeature, setSelectedQuickFeature] = useState(QUICK_FEATURES[0]);
-  const selectedPalette = THEME_PRESETS.find((theme) => theme.id === selectedTheme) ?? THEME_PRESETS[0];
-  const audioRef = useRef<HTMLAudioElement>(null);
-  const progress = duration > 0 ? (currentTime / duration) * 100 : 0;
-
-  const formatTime = (seconds: number) => {
-    if (!Number.isFinite(seconds) || seconds < 0) return '00:00';
-    const minutes = Math.floor(seconds / 60);
-    const remainingSeconds = Math.floor(seconds % 60);
-    return `${String(minutes).padStart(2, '0')}:${String(remainingSeconds).padStart(2, '0')}`;
-  };
-
-  const togglePlayback = async () => {
-    const audio = audioRef.current;
-    if (!audio) return;
-
-    if (!audio.paused) {
-      audio.pause();
-      return;
-    }
-
-    setPlaybackError('');
-    try {
-      await audio.play();
-    } catch (error) {
-      if (error instanceof Error && error.name === 'AbortError') return;
-      setPlaying(false);
-      setPlaybackError(error instanceof Error ? error.message : 'Unable to play this audio file.');
-    }
-  };
-
-  const seekToProgress = (value: number | undefined) => {
-    const audio = audioRef.current;
-    if (!audio || typeof value !== 'number' || !Number.isFinite(value) || !Number.isFinite(audio.duration)) return;
-    audio.currentTime = (Math.max(0, Math.min(100, value)) / 100) * audio.duration;
-  };
 
   return (
     <section
@@ -223,135 +164,11 @@ export const FeaturesSection: React.FC<FeaturesSectionProps> = ({
           </div>
         </article>
 
-        <article id="preview" className="cosmic-m3-card cosmic-m3-card-center group relative flex min-h-[40rem] scroll-mt-28 flex-col items-center overflow-hidden rounded-[28px] p-5 sm:p-7 md:col-span-2 lg:col-span-6 lg:col-start-4 lg:row-span-2 lg:row-start-1">
+        <article className="cosmic-m3-card cosmic-m3-card-center group relative flex min-h-[46rem] flex-col items-center overflow-hidden rounded-[28px] p-4 md:col-span-2 lg:col-span-6 lg:col-start-4 lg:row-span-2 lg:row-start-1 sm:p-7">
           <md-elevation aria-hidden="true" className="cosmic-m3-elevation cosmic-m3-elevation-raised" />
-          <div aria-hidden="true" className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_42%,rgba(245,158,11,0.15),transparent_58%)]" />
-          <div className="relative z-10 flex w-full items-center justify-between gap-3">
-            <md-assist-chip className="cosmic-m3-gradient-chip" onClick={onOpenDownload}>
-              <Sparkles slot="icon" className="h-4 w-4" />
-              Pure and clear sound
-            </md-assist-chip>
-            <span className="rounded-full border border-amber-100/10 bg-black/30 px-3 py-1.5 font-feature-stat text-[10px] text-amber-100/65">
-              PIXELMUSIC · ANDROID
-            </span>
-          </div>
-
-          <div className="relative z-10 my-6 flex flex-1 items-center justify-center">
-            <div aria-hidden="true" className="absolute h-[27rem] w-[27rem] max-w-[85vw] rounded-full border border-amber-300/10 shadow-[0_0_70px_rgba(245,158,11,0.14)]" />
-            <div aria-hidden="true" className="absolute h-[22rem] w-[22rem] max-w-[72vw] rounded-full border border-amber-100/[0.06]" />
-            <div
-              className="cosmic-m3-phone relative z-10 w-[min(23rem,84vw)] rounded-[2.5rem] border border-amber-100/15 bg-[#0c0b0e]/95 px-5 pb-5 pt-4 shadow-[0_0_50px_rgba(245,158,11,0.25)] transition-transform duration-500 ease-out group-hover:scale-[1.015] sm:px-6"
-              style={{ borderColor: `${selectedPalette.color}55`, boxShadow: `0 0 50px ${selectedPalette.glow}` }}
-            >
-              <audio
-                ref={audioRef}
-                src="/audio/desi-kalakaar.m4a"
-                preload="metadata"
-                onPlay={() => setPlaying(true)}
-                onPause={() => setPlaying(false)}
-                onTimeUpdate={(event) => setCurrentTime(event.currentTarget.currentTime)}
-                onLoadedMetadata={(event) => setDuration(event.currentTarget.duration)}
-                onDurationChange={(event) => setDuration(event.currentTarget.duration)}
-                onEnded={() => setPlaying(false)}
-                onError={() => {
-                  setPlaying(false);
-                  setPlaybackError('Desi Kalakaar could not be loaded. Please try again.');
-                }}
-              />
-              <div className="mb-5 flex items-center justify-between gap-3 text-amber-100/75">
-                <md-icon-button className="cosmic-m3-screen-icon" aria-label="Collapse player" title="Collapse player">
-                  <ChevronDown className="h-5 w-5" />
-                </md-icon-button>
-                <span className="text-sm font-semibold tracking-wide text-amber-100/90">Now Playing</span>
-                <div className="flex items-center gap-1">
-                  <md-icon-button className="cosmic-m3-screen-icon" aria-label="Audio output" title="Audio output">
-                    <Volume2 className="h-5 w-5" />
-                  </md-icon-button>
-                  <md-icon-button className="cosmic-m3-screen-icon" aria-label="Open queue" title="Open queue">
-                    <ListMusic className="h-5 w-5" />
-                  </md-icon-button>
-                </div>
-              </div>
-              <img
-                src="/images/desi-kalakaar-poster.png"
-                alt="Desi Kalakaar film poster"
-                className="aspect-square w-full rounded-[1.8rem] border border-amber-100/10 object-cover shadow-[0_14px_45px_rgba(0,0,0,0.32)]"
-                loading="eager"
-                decoding="async"
-              />
-              <div className="px-0.5 pt-5">
-                <div className="flex min-h-16 items-start justify-between gap-3">
-                  <div className="min-w-0">
-                    <h3 className="truncate text-xl font-semibold tracking-tight text-amber-100">Desi Kalakaar</h3>
-                    <p className="mt-1 text-base text-amber-100/60">Yo Yo Honey Singh</p>
-                  </div>
-                  <div className="flex shrink-0 items-center gap-1">
-                    <md-icon-button className="cosmic-m3-screen-icon" aria-label="Show lyrics" title="Show lyrics">
-                      <AudioLines className="h-5 w-5" />
-                    </md-icon-button>
-                    <md-icon-button className="cosmic-m3-screen-icon" aria-label="More track options" title="More track options">
-                      <MoreVertical className="h-5 w-5" />
-                    </md-icon-button>
-                  </div>
-                </div>
-                <md-slider
-                  className="cosmic-m3-slider cosmic-m3-progress mt-3"
-                  aria-label="Track progress"
-                  min={0}
-                  max={100}
-                  value={progress}
-                  onInput={(event) => seekToProgress(event.currentTarget.value)}
-                />
-                <div className="-mt-1 flex justify-between font-feature-stat text-[9px] text-neutral-500">
-                  <span>{formatTime(currentTime)}</span>
-                  <span>{formatTime(duration)}</span>
-                </div>
-                <div className="mt-2 flex justify-center">
-                  <span className="rounded-full border border-amber-100/10 bg-amber-300/[0.08] px-3 py-1 font-feature-stat text-[10px] tracking-wide text-amber-100/70">
-                    M4A · LOCAL AUDIO
-                  </span>
-                </div>
-                <div className="mt-6 grid grid-cols-3 gap-2">
-                  <md-icon-button className="cosmic-m3-transport-button" aria-label="Previous track" title="Previous track">
-                    <SkipBack className="h-6 w-6" />
-                  </md-icon-button>
-                  <button
-                    type="button"
-                    className="cosmic-m3-play-button"
-                    aria-label={playing ? 'Pause Desi Kalakaar' : 'Play Desi Kalakaar'}
-                    onClick={() => void togglePlayback()}
-                  >
-                    <md-ripple className="cosmic-m3-ripple" />
-                    {playing ? <Pause className="h-7 w-7" /> : <Play className="h-7 w-7" />}
-                  </button>
-                  <md-icon-button className="cosmic-m3-transport-button" aria-label="Next track" title="Next track">
-                    <SkipForward className="h-6 w-6" />
-                  </md-icon-button>
-                </div>
-                <div className="mt-5 grid grid-cols-3 gap-1 rounded-full border border-amber-200/10 bg-amber-200/[0.04] p-1.5">
-                  <md-icon-button className="cosmic-m3-mode-button" aria-label="Shuffle" title="Shuffle">
-                    <Shuffle className="h-5 w-5" />
-                  </md-icon-button>
-                  <md-icon-button className="cosmic-m3-mode-button" aria-label="Repeat" title="Repeat">
-                    <Repeat2 className="h-5 w-5" />
-                  </md-icon-button>
-                  <md-icon-button className="cosmic-m3-mode-button" aria-label="Add to favorites" title="Add to favorites">
-                    <Heart className="h-5 w-5" />
-                  </md-icon-button>
-                </div>
-                {playbackError && (
-                  <p role="alert" className="mt-3 text-center text-xs text-amber-200/80">
-                    {playbackError}
-                  </p>
-                )}
-              </div>
-            </div>
-          </div>
-
-          <div className="relative z-10 flex flex-wrap items-center justify-center gap-2">
-            <span className="rounded-full border border-amber-400/20 bg-amber-500/[0.08] px-3 py-1.5 text-[11px] text-amber-100/75">Bit-perfect</span>
-            <span className="rounded-full border border-amber-400/20 bg-amber-500/[0.08] px-3 py-1.5 text-[11px] text-amber-100/75">10-band EQ</span>
-            <span className="rounded-full border border-amber-400/20 bg-amber-500/[0.08] px-3 py-1.5 text-[11px] text-amber-100/75">Zero telemetry</span>
+          <div aria-hidden="true" className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_18%,rgba(245,158,11,0.12),transparent_60%)]" />
+          <div className="relative z-10 flex w-full flex-1 items-center justify-center">
+            <AppExperiencePreview onOpenDownload={onOpenDownload} />
           </div>
         </article>
 
