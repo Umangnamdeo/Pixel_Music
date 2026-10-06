@@ -4,28 +4,7 @@
 "https://pixelmusic-jz1s2muv6-umangwebwork24-6437.vercel.app/"
 
 
-<p align="center">
-  <img src="assets/LauncherIcon.png" alt="Pixel Music App Icon" width="128"/>
-</p>
 
-<p align="center">
-  <strong>The Ultimate Hybrid Local, Streaming, and Cloud Music Powerhouse for Android</strong><br> 
-  An elegant, feature-rich audio experience built for audiophiles, cloud hoarders, and streaming enthusiasts alike.
-</p>
-
-<p align="center">
-  <img src="assets/homepage.jpg" alt="Home Page" width="150" style="border-radius:26px; margin:4px;"/>
-  <img src="assets/explorepage.jpg" alt="Explore Page" width="150" style="border-radius:26px; margin:4px;"/>
-  <img src="assets/fullplayer.jpg" alt="Full Player" width="150" style="border-radius:26px; margin:4px;"/>
-  <img src="assets/fullplayer_alt.jpg" alt="Full Player Alternate Theme" width="150" style="border-radius:26px; margin:4px;"/>
-  <img src="assets/library.jpg" alt="Library" width="150" style="border-radius:26px; margin:4px;"/>
-  <img src="assets/analytics.jpg" alt="Listening Analytics" width="150" style="border-radius:26px; margin:4px;"/>
-  <img src="assets/song_cards.jpg" alt="Song Cards & Sharing" width="150" style="border-radius:26px; margin:4px;"/>
-  <img src="assets/streaming_supports.jpg" alt="Streaming & Sources" width="150" style="border-radius:26px; margin:4px;"/>
-</p>
-
-<p align="center">
-  <a href="https://ko-fi.com/H2K222J1ME" target="_blank">
     <img
       src="assets/support_me_on_kofi_badge_red.png"
       alt="Support PixelMusic on Ko-fi"
