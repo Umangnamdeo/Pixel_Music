@@ -120,6 +120,7 @@ export const FeaturesSection: React.FC<FeaturesSectionProps> = ({
     try {
       await audio.play();
     } catch (error) {
+      if (error instanceof Error && error.name === 'AbortError') return;
       setPlaying(false);
       setPlaybackError(error instanceof Error ? error.message : 'Unable to play this audio file.');
     }
