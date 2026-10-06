@@ -2,7 +2,6 @@ import React, { useCallback, useState } from 'react';
 import { Navbar } from './components/Navbar';
 import { CosmicScene3D, VisualizerMode } from './components/CosmicScene3D';
 import { HeroSection } from './components/HeroSection';
-import { PhoneLineup } from './components/PhoneLineup';
 import { FeaturesSection } from './components/FeaturesSection';
 import { ReleasesSection } from './components/ReleasesSection';
 import { Footer } from './components/Footer';
@@ -32,7 +31,7 @@ export default function App() {
   }, []);
 
   return (
-    <div className={`site-theme theme-${selectedHarmony} min-h-screen bg-[#070709] text-[#e6e3df] relative selection:bg-[#e29d52]/30 selection:text-[#f3b775] overflow-x-hidden`}>
+    <div id="top" className={`site-theme theme-${selectedHarmony} min-h-screen bg-[#070709] text-[#e6e3df] relative selection:bg-[#e29d52]/30 selection:text-[#f3b775] overflow-x-hidden`}>
       {/* 3D WebGL Cosmic Background with Parallax Displacement */}
       <div
         className="fixed inset-0 pointer-events-none parallax-layer z-0"
@@ -71,23 +70,18 @@ export default function App() {
       <div className="relative z-10 flex flex-col min-h-screen">
         <Navbar
           onOpenDownload={() => handleOpenDownload()}
-          onOpenTelegram={() => setTelegramModalOpen(true)}
         />
 
         <main className="flex-1 space-y-12">
           {/* Hero Section */}
           <HeroSection
             onOpenDownload={() => handleOpenDownload()}
-            onOpenTelegram={() => setTelegramModalOpen(true)}
             shakeTrigger={shakeTrigger}
           />
-
-          <PhoneLineup />
 
           {/* The Good Stuff - 3D Feature Cards */}
           <FeaturesSection
             onOpenDownload={() => handleOpenDownload()}
-            onOpenTelegram={() => setTelegramModalOpen(true)}
             selectedTheme={selectedHarmony}
             onThemeChange={setSelectedHarmony}
           />
@@ -100,6 +94,8 @@ export default function App() {
         <Footer
           onOpenDownload={() => handleOpenDownload()}
           onOpenTelegram={() => setTelegramModalOpen(true)}
+          selectedTheme={selectedHarmony}
+          onThemeChange={setSelectedHarmony}
         />
       </div>
 
