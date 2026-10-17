@@ -925,6 +925,400 @@
   box-shadow: 0 0 12px rgba(245, 158, 11, 0.22);
 }
 
+.music-railway-section {
+  color-scheme: dark;
+  --railway-accent: var(--site-accent, #f59e0b);
+  --railway-accent-bright: var(--site-accent-bright, #fbbf24);
+}
+
+.music-railway-download {
+  border: 1px solid color-mix(in srgb, var(--railway-accent) 42%, transparent);
+  background: color-mix(in srgb, var(--railway-accent) 14%, #100e12);
+  color: var(--railway-accent-bright);
+  transition: background-color 180ms ease, border-color 180ms ease, transform 180ms ease;
+}
+
+.music-railway-download:hover {
+  transform: translateY(-2px);
+  border-color: var(--railway-accent-bright);
+  background: color-mix(in srgb, var(--railway-accent) 24%, #100e12);
+}
+
+.music-railway-download:focus-visible,
+.music-theme-button:focus-visible {
+  outline: 2px solid var(--railway-accent-bright);
+  outline-offset: 3px;
+}
+
+.music-railway {
+  position: relative;
+  height: 587px;
+  overflow: hidden;
+  isolation: isolate;
+  border: 1px solid color-mix(in srgb, var(--railway-accent) 20%, transparent);
+  border-radius: 28px;
+  background:
+    linear-gradient(180deg, rgba(12, 11, 15, 0.18), rgba(7, 7, 9, 0.96)),
+    radial-gradient(ellipse at 50% 100%, color-mix(in srgb, var(--railway-accent) 12%, transparent), transparent 60%),
+    #0b0a0d;
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.035), 0 24px 70px -45px var(--railway-accent);
+}
+
+.music-night-glow {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background:
+    radial-gradient(circle at 12% 24%, rgba(255, 255, 255, 0.22) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 30% 42%, rgba(255, 255, 255, 0.2) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 51% 19%, rgba(255, 255, 255, 0.28) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 69% 36%, rgba(255, 255, 255, 0.2) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 88% 22%, rgba(255, 255, 255, 0.24) 0 1px, transparent 1.5px);
+}
+
+.music-starfield {
+  position: absolute;
+  top: 24px;
+  left: 0;
+  width: 100%;
+  height: 150px;
+  opacity: 0.5;
+  background: radial-gradient(ellipse at 50% 0%, color-mix(in srgb, var(--railway-accent) 10%, transparent), transparent 68%);
+}
+
+.music-train-window {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.music-train-belt {
+  position: absolute;
+  bottom: 30px;
+  left: 0;
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  animation: music-train-pass 15.64s linear infinite;
+}
+
+.music-train-consist {
+  display: flex;
+  flex: none;
+  align-items: flex-end;
+  gap: clamp(1.25rem, 2.6vw, 2.25rem);
+  height: 552px;
+  padding-right: clamp(3rem, 7vw, 6rem);
+}
+
+.music-wagon {
+  position: relative;
+  flex: none;
+  width: clamp(232px, 20.24vw, 258px);
+  height: 534px;
+}
+
+.music-phone {
+  position: absolute;
+  z-index: 1;
+  bottom: 46px;
+  left: 50%;
+  width: clamp(190px, 16.45vw, 223px);
+  height: clamp(417px, 34.15vw, 481px);
+  overflow: hidden;
+  transform: translateX(-50%);
+  border: 4px solid #25232a;
+  border-radius: 16px;
+  background: #111015;
+  box-shadow: 0 7px 22px rgba(0, 0, 0, 0.58), 0 0 0 1px rgba(255, 255, 255, 0.14);
+}
+
+.music-phone img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #111015;
+  object-position: top center;
+}
+
+.music-phone-camera {
+  position: absolute;
+  z-index: 2;
+  top: 4px;
+  left: 50%;
+  width: 22px;
+  height: 5px;
+  transform: translateX(-50%);
+  border-radius: 999px;
+  background: #111015;
+}
+
+.music-wagon-bed {
+  position: absolute;
+  right: 3px;
+  bottom: 24px;
+  left: 3px;
+  height: 18px;
+  border: 1px solid color-mix(in srgb, var(--railway-accent) 55%, #342b22);
+  border-radius: 5px 5px 2px 2px;
+  background: linear-gradient(180deg, color-mix(in srgb, var(--railway-accent) 35%, #282027), #17151a);
+  box-shadow: inset 0 4px rgba(255, 255, 255, 0.07), 0 8px 12px rgba(0, 0, 0, 0.3);
+}
+
+.music-wagon-bed::before,
+.music-wagon-bed::after {
+  position: absolute;
+  top: -8px;
+  width: 8px;
+  height: 10px;
+  border-radius: 2px 2px 0 0;
+  background: color-mix(in srgb, var(--railway-accent) 43%, #272127);
+  content: "";
+}
+
+.music-wagon-bed::before { left: 10px; }
+.music-wagon-bed::after { right: 10px; }
+
+.music-wheel {
+  position: absolute;
+  bottom: 3px;
+  width: 25px;
+  height: 25px;
+  border: 5px solid #8c8581;
+  border-radius: 50%;
+  background: #17151a;
+  box-shadow: inset 0 0 0 2px #353139, 0 2px 3px rgba(0, 0, 0, 0.6);
+}
+
+.music-wheel-front { right: 18px; }
+.music-wheel-back { left: 18px; }
+
+.music-engine {
+  position: relative;
+  flex: none;
+  width: 230px;
+  height: 225px;
+}
+
+.music-engine-art {
+  position: absolute;
+  z-index: 1;
+  bottom: 0;
+  left: -4px;
+  width: 238px;
+  height: 182px;
+  overflow: visible;
+  transform: scaleX(-1);
+  filter: drop-shadow(0 8px 10px rgba(0, 0, 0, 0.4));
+}
+
+.music-engine-outline {
+  fill: #f2c433;
+  stroke: #c88e19;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 3;
+}
+
+.music-engine-window {
+  fill: #38302a;
+  stroke: #f7d95d;
+  stroke-width: 3;
+}
+
+.music-engine-wheel-large {
+  fill: #f1c53a;
+  stroke: #d8d0c0;
+  stroke-width: 5;
+}
+
+.music-engine-wheel-small {
+  fill: #e95d58;
+}
+
+.music-engine-light {
+  fill: #ffe7a1;
+  filter: drop-shadow(0 0 5px #f8c762);
+}
+
+.music-steam {
+  position: absolute;
+  z-index: 0;
+  left: 69px;
+  bottom: 151px;
+  width: 28px;
+  height: 30px;
+}
+
+.music-steam i {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 23px;
+  height: 23px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(244, 242, 238, 0.72) 0 32%, rgba(224, 222, 220, 0.3) 58%, transparent 76%);
+  opacity: 0;
+  animation: music-steam-rise 1.9s ease-out infinite;
+}
+
+.music-steam i:nth-child(2) { animation-delay: 0.55s; }
+.music-steam i:nth-child(3) { animation-delay: 1.1s; }
+.music-steam i:nth-child(4) { animation-delay: 1.65s; }
+
+.music-track {
+  position: absolute;
+  right: 0;
+  bottom: 34px;
+  left: 0;
+  height: 21px;
+  overflow: hidden;
+  border-top: 4px solid #67616a;
+  border-bottom: 4px solid #67616a;
+}
+
+.music-track::after {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(90deg, transparent 0 18px, rgba(144, 132, 116, 0.55) 18px 24px, transparent 24px 42px);
+  content: "";
+  will-change: transform;
+  animation: music-track-scroll 680ms linear infinite;
+}
+
+.music-railway-caption {
+  position: absolute;
+  right: 18px;
+  bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: color-mix(in srgb, var(--railway-accent-bright) 67%, #aaa);
+  font-family: var(--font-feature-stat);
+  font-size: 9px;
+  letter-spacing: 0.13em;
+}
+
+.music-theme-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 36px;
+  padding: 0 13px;
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  border-radius: 999px;
+  background: rgba(20, 18, 24, 0.72);
+  color: #d4d0cc;
+  font-size: 11px;
+  transition: border-color 180ms ease, background-color 180ms ease, color 180ms ease;
+}
+
+.music-theme-button span {
+  width: 9px;
+  height: 9px;
+  flex: none;
+  border-radius: 50%;
+  box-shadow: 0 0 10px currentColor;
+}
+
+.music-theme-button:hover,
+.music-theme-button.is-selected {
+  border-color: color-mix(in srgb, var(--railway-accent) 60%, transparent);
+  background: color-mix(in srgb, var(--railway-accent) 12%, #141218);
+  color: var(--railway-accent-bright);
+}
+
+@keyframes music-train-pass {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes music-steam-rise {
+  0% { opacity: 0; transform: translate(0, 0) scale(0.5); }
+  14% { opacity: 0.82; }
+  100% { opacity: 0; transform: translate(-48px, -82px) scale(2.8); }
+}
+
+@keyframes music-track-scroll {
+  to { transform: translate3d(-42px, 0, 0); }
+}
+
+@media (max-width: 640px) {
+  .music-railway {
+    height: 541px;
+    border-radius: 22px;
+  }
+
+  .music-train-belt {
+    bottom: 30px;
+    animation-duration: 14.62s;
+  }
+
+  .music-train-consist {
+    height: 460px;
+    gap: 14px;
+    padding-right: 40px;
+  }
+
+  .music-wagon {
+    width: 200px;
+    height: 443px;
+  }
+
+  .music-phone {
+    bottom: 42px;
+    width: 167px;
+    height: 354px;
+    border-width: 3px;
+    border-radius: 13px;
+  }
+
+  .music-engine {
+    width: 190px;
+    height: 198px;
+  }
+
+  .music-engine-art {
+    width: 200px;
+    height: 154px;
+  }
+
+  .music-steam {
+    left: 57px;
+    bottom: 131px;
+  }
+
+  .music-railway-caption {
+    right: 12px;
+    font-size: 8px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .music-train-belt {
+    animation-name: music-train-pass !important;
+    animation-duration: 30.71s !important;
+    animation-iteration-count: infinite !important;
+    animation-timing-function: linear !important;
+    animation-play-state: running !important;
+  }
+
+  .music-steam i {
+    animation-name: music-steam-rise !important;
+    animation-duration: 3.8s !important;
+    animation-iteration-count: infinite !important;
+    animation-timing-function: ease-out !important;
+  }
+
+  .music-track::after {
+    animation-name: music-track-scroll !important;
+    animation-duration: 1.92s !important;
+    animation-iteration-count: infinite !important;
+    animation-timing-function: linear !important;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .cosmic-m3-card {
     transition: none;
@@ -932,7 +1326,9 @@
 }
 
 .site-theme {
+  background-color: #070709;
   background-image: radial-gradient(ellipse at 50% 0%, var(--site-page-glow), transparent 55%);
+  background-repeat: no-repeat;
   transition: --site-accent 0.45s ease, --site-accent-bright 0.45s ease, --site-page-glow 0.55s ease;
 }
 
