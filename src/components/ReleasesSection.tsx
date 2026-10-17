@@ -99,11 +99,7 @@ export const ReleasesSection: React.FC<ReleasesSectionProps> = ({ onDownloadClic
                   e.stopPropagation();
                   onDownloadClick();
                 }}
-                className={`download-cta w-full py-2.5 px-4 rounded-full text-xs font-semibold font-feature-body flex items-center justify-center gap-2 transition-all cursor-pointer ${
-                  build.recommended
-                    ? 'bg-[#e29d52] hover:bg-[#f3b775] text-black shadow-lg shadow-[#e29d52]/20 group-hover:shadow-[#e29d52]/35 group-hover:scale-[1.02] active:scale-95'
-                    : 'bg-white/10 hover:bg-white/15 text-white group-hover:bg-[#e29d52]/20 group-hover:text-white group-hover:border group-hover:border-[#e29d52]/40 active:scale-95'
-                }`}
+                className="download-cta w-full py-2.5 px-4 rounded-full text-xs font-semibold font-feature-body flex items-center justify-center gap-2 transition-all cursor-pointer active:scale-95"
               >
                 <Download className="w-3.5 h-3.5" />
                 <span>Download APK</span>

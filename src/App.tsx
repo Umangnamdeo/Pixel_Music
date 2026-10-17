@@ -4,6 +4,7 @@ import { CosmicScene3D, VisualizerMode } from './components/CosmicScene3D';
 import { HeroSection } from './components/HeroSection';
 import { FeaturesSection } from './components/FeaturesSection';
 import { ReleasesSection } from './components/ReleasesSection';
+import { InspirationSection } from './components/InspirationSection';
 import { Footer } from './components/Footer';
 import { TelegramModal } from './components/TelegramModal';
 import { useParallax } from './hooks/useParallax';
@@ -87,6 +88,8 @@ export default function App() {
 
           {/* Distribution & Releases */}
           <ReleasesSection onDownloadClick={handleOpenDownload} />
+
+          <InspirationSection />
         </main>
 
         {/* Footer */}

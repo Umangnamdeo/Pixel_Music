@@ -950,6 +950,14 @@
   outline-offset: 3px;
 }
 
+.inspiration-section {
+  border-color: color-mix(in srgb, var(--site-accent) 22%, transparent);
+  background:
+    radial-gradient(ellipse at 50% 0%, color-mix(in srgb, var(--site-accent) 12%, transparent), transparent 62%),
+    linear-gradient(180deg, #15121a 0%, #0a090d 100%);
+  box-shadow: 0 24px 80px -48px var(--site-page-glow);
+}
+
 .download-cta {
   border-color: transparent;
   background-color: #cbb5ff;
