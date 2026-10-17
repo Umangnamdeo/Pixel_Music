@@ -500,7 +500,7 @@ export const AppExperiencePreview = ({
                           <span className="truncate">https://{cloudService === 'Spotify' ? 'open.spotify.com/playlist/…' : 'youtube.com/playlist?list=…'}</span>
                         </div>
                       </div>
-                      <button type="button" onClick={onOpenDownload} className="w-full rounded-full bg-amber-500 px-4 py-3 text-sm font-semibold text-black transition-colors hover:bg-amber-300">Get the app to import playlists</button>
+                      <button type="button" onClick={onOpenDownload} className="download-cta w-full rounded-full px-4 py-3 text-sm font-semibold transition-colors">Get the app to import playlists</button>
                     </div>
                   )}
                 </section>

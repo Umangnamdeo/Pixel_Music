@@ -58,7 +58,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenDownload }) => {
           <button
             type="button"
             onClick={onOpenDownload}
-            className="hidden shrink-0 items-center gap-2 rounded-full bg-[#e29d52] px-4 py-2 text-xs font-semibold text-neutral-950 transition-all duration-300 ease-out hover:scale-[1.02] hover:bg-[#f3b775] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#f3b775] active:scale-[0.98] sm:inline-flex"
+            className="download-cta hidden shrink-0 items-center gap-2 rounded-full px-4 py-2 text-xs font-semibold transition-all duration-300 ease-out hover:scale-[1.02] focus-visible:outline-2 focus-visible:outline-offset-4 active:scale-[0.98] sm:inline-flex"
           >
             <Download className="h-3.5 w-3.5" />
             <span>Download</span>
@@ -94,7 +94,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenDownload }) => {
                 setMobileMenuOpen(false);
                 onOpenDownload();
               }}
-              className="mt-2 flex w-full items-center justify-center gap-2 rounded-full bg-[#e29d52] px-4 py-3 text-sm font-semibold text-neutral-950 transition-all duration-300 ease-out hover:scale-[1.02] hover:bg-[#f3b775] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#f3b775]"
+              className="download-cta mt-2 flex w-full items-center justify-center gap-2 rounded-full px-4 py-3 text-sm font-semibold transition-all duration-300 ease-out hover:scale-[1.02] focus-visible:outline-2 focus-visible:outline-offset-2"
             >
               <Download className="h-4 w-4" />
               Download APK

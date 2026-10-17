@@ -950,6 +950,25 @@
   outline-offset: 3px;
 }
 
+.download-cta {
+  border-color: transparent;
+  background-color: #cbb5ff;
+  color: #281646;
+  box-shadow: 0 4px 16px rgba(177, 139, 255, 0.22);
+  transition: background-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+}
+
+.download-cta:hover {
+  transform: translateY(-1px);
+  background-color: #dacaff;
+  box-shadow: 0 6px 20px rgba(177, 139, 255, 0.34);
+}
+
+.download-cta:focus-visible {
+  outline: 2px solid #dacaff;
+  outline-offset: 3px;
+}
+
 .music-railway {
   position: relative;
   height: 587px;

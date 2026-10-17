@@ -97,7 +97,7 @@ export const FeaturesSection: React.FC<FeaturesSectionProps> = ({
       <button
         type="button"
         onClick={onOpenDownload}
-        className="music-railway-download inline-flex w-fit items-center gap-2 rounded-full px-5 py-3 text-sm font-semibold"
+        className="download-cta music-railway-download inline-flex w-fit items-center gap-2 rounded-full px-5 py-3 text-sm font-semibold"
       >
         <ArrowDownToLine className="h-4 w-4" />
         Get Pixel Music

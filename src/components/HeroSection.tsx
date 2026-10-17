@@ -51,7 +51,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenDownload, shakeT
             <button
               type="button"
               onClick={onOpenDownload}
-              className="inline-flex min-h-12 items-center gap-2.5 rounded-full bg-[#e29d52] px-6 py-3 text-sm font-semibold text-neutral-950 shadow-xl shadow-[#e29d52]/20 transition-all duration-300 ease-out hover:scale-[1.02] hover:bg-[#f3b775] hover:shadow-[#e29d52]/35 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#f3b775] active:scale-[0.98]"
+              className="download-cta inline-flex min-h-12 items-center gap-2.5 rounded-full px-6 py-3 text-sm font-semibold transition-all duration-300 ease-out hover:scale-[1.02] focus-visible:outline-2 focus-visible:outline-offset-4 active:scale-[0.98]"
             >
               <Download className="h-4 w-4" />
               <span>Download APK</span>
