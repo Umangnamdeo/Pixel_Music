@@ -18,12 +18,7 @@ export default function App() {
   const { bgOffset, midOffset } = useParallax();
 
   const handleOpenDownload = () => {
-    const downloadLink = document.createElement('a');
-    downloadLink.href = '/downloads/app-mobile-universal-release-1.8%20beta.apk';
-    downloadLink.download = 'app-mobile-universal-release-1.8 beta.apk';
-    document.body.appendChild(downloadLink);
-    downloadLink.click();
-    downloadLink.remove();
+    window.location.assign('https://github.com/ianshulyadav/PixelMusicApp/releases');
   };
 
   const handleAsteroidImpact = useCallback(() => {
