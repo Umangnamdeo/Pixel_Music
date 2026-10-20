@@ -581,7 +581,7 @@ export const CosmicScene3D: React.FC<CosmicScene3DProps> = ({
       }
 
       // Rotate planet on its axis
-      planetMesh.rotation.y = time * 0.035;
+      planetMesh.rotation.y = time * 0.0259;
 
       // Rotate particles and update ripples
       const posAttr = ringGeometry.attributes.position;

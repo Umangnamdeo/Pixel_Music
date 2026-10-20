@@ -1026,7 +1026,7 @@
   display: flex;
   width: max-content;
   will-change: transform;
-  animation: music-train-pass 15.64s linear infinite;
+  animation: music-train-pass 19.55s linear infinite;
 }
 
 .music-train-consist {
@@ -1279,7 +1279,7 @@
 
   .music-train-belt {
     bottom: 30px;
-    animation-duration: 14.62s;
+    animation-duration: 18.275s;
   }
 
   .music-train-consist {
@@ -1325,7 +1325,7 @@
 @media (prefers-reduced-motion: reduce) {
   .music-train-belt {
     animation-name: music-train-pass !important;
-    animation-duration: 30.71s !important;
+    animation-duration: 38.3875s !important;
     animation-iteration-count: infinite !important;
     animation-timing-function: linear !important;
     animation-play-state: running !important;

@@ -29,7 +29,7 @@ export const ReleasesSection: React.FC<ReleasesSectionProps> = ({ onDownloadClic
         <div className="space-y-3 max-w-xl">
           <div className="text-xs font-feature-stat text-[#f3b775] tracking-widest uppercase flex items-center gap-2">
             <Sparkles className="w-3.5 h-3.5 text-[#e29d52]" />
-            <span>✦ STABLE DISTRIBUTION</span>
+            <span>✦ BETA DISTRIBUTION</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-feature-body font-bold text-white tracking-tight">
             Download the <span className="italic font-normal text-[#f3b775]">Universal APK</span>

@@ -55,7 +55,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenDownload, shakeT
             >
               <Download className="h-4 w-4" />
               <span>Download APK</span>
-              <span className="font-feature-stat text-xs opacity-75">v1.4.09</span>
+              <span className="font-feature-stat text-xs opacity-75">v Beta 1.8.0</span>
             </button>
             <a
               href="https://github.com/ianshulyadav/PixelMusicApp"

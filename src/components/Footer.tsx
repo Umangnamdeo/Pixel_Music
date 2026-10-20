@@ -118,7 +118,7 @@ export const Footer: React.FC<FooterProps> = ({
       </div>
 
       <div className="mt-10 flex flex-col gap-4 border-t border-white/10 pt-5 text-xs text-neutral-500 sm:flex-row sm:items-center sm:justify-between">
-        <p>© 2026 PixelMusic · GNU GPL v3.0 · Release v1.4.09</p>
+        <p>© 2026 PixelMusic · GNU GPL v3.0 · Release v Beta 1.8.0</p>
         <div className="flex items-center gap-4">
           <a href="https://github.com/Umangnamdeo" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-[#f3b775] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#f3b775]">
             Created by Umangnamdeo

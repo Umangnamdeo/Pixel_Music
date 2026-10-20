@@ -19,8 +19,8 @@ export default function App() {
 
   const handleOpenDownload = () => {
     const downloadLink = document.createElement('a');
-    downloadLink.href = '/downloads/app-universal-release.apk';
-    downloadLink.download = 'app-mobile-universal-release.apk';
+    downloadLink.href = '/downloads/app-mobile-universal-release-1.8%20beta.apk';
+    downloadLink.download = 'app-mobile-universal-release-1.8 beta.apk';
     document.body.appendChild(downloadLink);
     downloadLink.click();
     downloadLink.remove();
