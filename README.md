@@ -1,11 +1,5 @@
 
-# Website link :
-<p align="center">
-"https://pixelmusic-jz1s2muv6-umangwebwork24-6437.vercel.app/"
-
-
-
-    <img
+ <img
       src="assets/support_me_on_kofi_badge_red.png"
       alt="Support PixelMusic on Ko-fi"
       width="280">
