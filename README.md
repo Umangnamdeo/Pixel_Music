@@ -11,7 +11,7 @@ Official landing and download website for the Pixel Music app.
 
 Get the latest Android build directly from the releases page:
 
-👉 **[Download Latest APK](https://github.com/Umangnamdeo/Pixel_Music/releases/latest)**
+👉 **[Download Latest APK](https://github.com/ianshulyadav/PixelMusicApp/releases)**
 
 ---
 
